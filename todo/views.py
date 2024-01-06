@@ -30,3 +30,8 @@ def editTask(request, pk):
             'task': task
         }
         return render(request, 'editTask.html', context)
+    
+def deleteTask(request, pk):
+    task = get_object_or_404(Task, pk=pk)
+    task.delete()
+    return redirect('home')
