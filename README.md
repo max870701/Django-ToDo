@@ -11,19 +11,19 @@ A simple Todo application built with Django and Docker.
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-### Installation
+## Installation
 
-1. Clone the repository
+### 1. Clone the repository
 ```bash
 git clone https://github.com/max870701/Django-ToDo.git 
 ```
 
-2. Build up the Dockerfile
+### 2. Build up the Dockerfile
 ```bash
 docker build -t django-todo:latest .
 ```
 
-3. Run the Docker Image
+### 3. Run the Docker Image
 ```bash
 docker run -p 8001:8001 django-todo:latest
 ```
