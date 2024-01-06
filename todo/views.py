@@ -1,4 +1,4 @@
-from django.shortcuts import redirect, get_object_or_404
+from django.shortcuts import redirect, get_object_or_404, render
 from .models import Task
 
 def addTask(request):
@@ -11,3 +11,22 @@ def markAsDone(request, pk):
     task.is_completed = True
     task.save()
     return redirect('home')
+
+def markAsUndone(request, pk):
+    task = get_object_or_404(Task, pk=pk)
+    task.is_completed = False
+    task.save()
+    return redirect('home')
+
+def editTask(request, pk):
+    task = get_object_or_404(Task, pk=pk)
+    if request.method == 'POST':
+        new_task = request.POST['task']
+        task.task = new_task
+        task.save()
+        return redirect('home')
+    else:
+        context = {
+            'task': task
+        }
+        return render(request, 'editTask.html', context)
